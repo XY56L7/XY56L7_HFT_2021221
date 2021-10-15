@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using XY56L7_HFT_2021221.Models;
+using XY56L7_HFT_2021221.Models;
+using XY56L7_HFT_2021221.Client;
 
 namespace XY56L7_HFT_2021221.Data
 {
-    public class XYZDbContext : DbContext
+    public class PhoneDbContext : DbContext
     {
-        public XYZDbContext()
+        public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<Phone> Phones { get; set; }
+
+        public PhoneDbContext()
         {
             this.Database.EnsureCreated();
         }
@@ -30,5 +34,17 @@ namespace XY56L7_HFT_2021221.Data
         }
         //Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|
         //\Database.mdf;Integrated Security = True
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder) 
+        {
+            //fluent api
+            modelBuilder.Entity<Phone>(entity =>
+           {
+               entity.HasOne(phone => phone.Brand)
+               .WithMany(Brand => Brand.Phones)
+               .HasForeignKey(phone => phone.BrandId)
+               .OnDelete(DeleteBehavior.ClientSetNull);
+           });
+        }
     }
 }
