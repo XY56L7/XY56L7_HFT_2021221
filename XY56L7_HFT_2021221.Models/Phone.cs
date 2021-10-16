@@ -13,14 +13,17 @@ namespace XY56L7_HFT_2021221.Models
     public class Phone
     {
         [Key]
-        public int CommentId { get; set; }
-        
-        [MaxLength(120)]
-        public string Content { get; set; }
-        
+        public int PhoneId { get; set; }
+
+        [ForeignKey(nameof(OSYSTEM))]
+        public int OSId { get; set; }
+        [NotMapped]
+        public string AllData => $"BrandID:{BrandId},  PhoneID: {PhoneId}" +
+            $"OSId : {OSYSTEM} ";
         [NotMapped]
         public virtual Brand Brand { get; set; }
-        
+        public virtual OSYSTEM OSYSTEM { get; set; }
+
         [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }
     }

@@ -32,7 +32,7 @@ namespace XY56L7_HFT_2021221.Endpoint
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    //await context.Response.WriteAsync("Hello World!");
                 });
             });
         }
