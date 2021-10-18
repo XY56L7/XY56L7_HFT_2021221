@@ -10,7 +10,8 @@ namespace XY56L7_HFT_2021221.Client
         static void Main(string[] args)
         {
 
-            
+            PhoneDbContext db = new PhoneDbContext();
+            ;
             
 
             
