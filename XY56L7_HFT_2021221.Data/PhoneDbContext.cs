@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XY56L7_HFT_2021221.Models;
+using Microsoft.Data.SqlClient;
+
 
 
 namespace XY56L7_HFT_2021221.Data
