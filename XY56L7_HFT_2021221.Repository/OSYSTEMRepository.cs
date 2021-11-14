@@ -8,7 +8,7 @@ using XY56L7_HFT_2021221.Models;
 
 namespace XY56L7_HFT_2021221.Repository
 {
-    class OSYSTEMRepository
+    public class OSYSTEMRepository : IOSYSTEMRepository
     {
         PhoneDbContext db;
         public OSYSTEMRepository(PhoneDbContext db)
@@ -39,7 +39,7 @@ namespace XY56L7_HFT_2021221.Repository
         public void Update(OSYSTEM oSYSTEM)
         {
             var oldOS = Read(oSYSTEM.OSId);
-            
+            oldOS.OS = oSYSTEM.OS;
             db.SaveChanges();
 
         }

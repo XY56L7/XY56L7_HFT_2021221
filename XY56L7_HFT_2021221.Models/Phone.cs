@@ -16,13 +16,15 @@ namespace XY56L7_HFT_2021221.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PhoneId { get; set; }
 
+        [Required]
         [ForeignKey(nameof(OSYSTEM))]
         public int OSId { get; set; }
-        [NotMapped]
-        public string AllData => $"BrandID:{BrandId},  PhoneID: {PhoneId}" +
-            $"OSId : {OSYSTEM} ";
+        //[NotMapped]
+        //public string AllData => $"BrandID:{BrandId},  PhoneID: {PhoneId}" +
+        //    $"OSId : {OSYSTEM} ";
         [NotMapped]
         public virtual Brand Brand { get; set; }
+        [NotMapped]
         public virtual OSYSTEM OSYSTEM { get; set; }
 
         [ForeignKey(nameof(Brand))]
