@@ -40,6 +40,7 @@ namespace XY56L7_HFT_2021221.Repository
         {
             var oldOS = Read(oSYSTEM.OSId);
             oldOS.OS = oSYSTEM.OS;
+            oldOS.security_level = oSYSTEM.security_level;
             db.SaveChanges();
 
         }

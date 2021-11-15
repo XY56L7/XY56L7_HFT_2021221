@@ -42,7 +42,8 @@ namespace XY56L7_HFT_2021221.Repository
             var oldphone = Read(phone.PhoneId);
             oldphone.OSId = phone.OSId;
             oldphone.BrandId = phone.BrandId;
-
+            oldphone.OSId = phone.OSId;
+            oldphone.break_level = phone.break_level;
 
             db.SaveChanges();
 

@@ -38,7 +38,7 @@ namespace XY56L7_HFT_2021221.Repository
             var oldBrand = Read(brand.BrandId);
             oldBrand.Category = brand.Category;
             oldBrand.Rating = brand.Rating;
-
+            oldBrand.trust_level = brand.trust_level;
             db.SaveChanges();
 
         }
