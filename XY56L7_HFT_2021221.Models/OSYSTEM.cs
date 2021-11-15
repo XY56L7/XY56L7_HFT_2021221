@@ -12,11 +12,14 @@ namespace XY56L7_HFT_2021221.Models
     public class OSYSTEM
     {
         [Key]
+        
         public int OSId { get; set; }
         
         
         [MaxLength(120)]
         public string OS { get; set; }
+
+        public int security_level { get; set; }
 
         [NotMapped]
         public string AllData => $"OSID:{OSId},  OS: {OS}" +

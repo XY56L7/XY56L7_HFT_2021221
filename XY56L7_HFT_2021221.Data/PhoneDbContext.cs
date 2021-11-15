@@ -32,7 +32,7 @@ namespace XY56L7_HFT_2021221.Data
             {
                 optionsBuilder
                     .UseLazyLoadingProxies()
-                    .UseSqlServer(@"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security = True");
+                    .UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
             }
         }
         //Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|

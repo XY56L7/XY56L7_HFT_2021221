@@ -14,8 +14,8 @@ namespace XY56L7_HFT_2021221.Models
     {
         [Key]
         public int BrandId { get; set; }
-        
-        
+
+        public int trust_level { get; set; }
 
         [MaxLength(100)]
         public string Category { get; set; }
