@@ -15,7 +15,7 @@ namespace XY56L7_HFT_2021221.Models
         
         public int OSId { get; set; }
         
-        
+       
         [MaxLength(120)]
         public string OS { get; set; }
 

@@ -21,10 +21,7 @@ namespace XY56L7_HFT_2021221.Data
         {
             this.Database.EnsureCreated();
         }
-        //public virtual DbSet<HR> HRS_ { get; set; }
-        //public virtual DbSet<Futár> Futar_ { get; set; }
-        //public virtual DbSet<Auditor> Auditor_ { get; set; }
-        //public virtual DbSet<Diszpécser> Diszpecser_ { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder 
             optionsBuilder) 
         {
@@ -35,33 +32,32 @@ namespace XY56L7_HFT_2021221.Data
                     .UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
             }
         }
-        //Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|
-        //\Database.mdf;Integrated Security = True
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
-            //PhoneDbContext db = new PhoneDbContext();
+            
             #region INIT
             //Phone Brands
-            Brand Iphone = new Brand() { BrandId = 22, Category = "Okos telefon", Rating = 8 };
-            Brand Samsung = new Brand() { BrandId = 33, Category = "Okos telefon", Rating = 6 };
-            Brand Huawei = new Brand() { BrandId = 44, Category = "Okos telefon", Rating = 7 };
-            Brand Motorola = new Brand() { BrandId = 55, Category = "Gombos telefon", Rating = 2 };
+            Brand Iphone = new Brand() { BrandId = 22, Category = "Okos telefon", Rating = 8 , trust_level = 9};
+            Brand Samsung = new Brand() { BrandId = 33, Category = "Okos telefon", Rating = 6 ,trust_level = 4 };
+            Brand Huawei = new Brand() { BrandId = 44, Category = "Okos telefon", Rating = 7, trust_level = 7 };
+            Brand Motorola = new Brand() { BrandId = 55, Category = "Gombos telefon", Rating = 2, trust_level = 4 };
 
-            OSYSTEM Android = new Models.OSYSTEM() { OSId = 100, OS = "Android" };
-            OSYSTEM IOS = new Models.OSYSTEM() { OSId = 101, OS = "IOS" };
-            OSYSTEM MOS = new Models.OSYSTEM() { OSId = 102, OS = "MOS" };
+            OSYSTEM Android = new Models.OSYSTEM() { OSId = 100, OS = "Android",security_level = 6 };
+            OSYSTEM IOS = new Models.OSYSTEM() { OSId = 101, OS = "IOS", security_level = 8 };
+            OSYSTEM MOS = new Models.OSYSTEM() { OSId = 102, OS = "MOS", security_level = 3 };
 
 
             //Phone Types
             
 
-            Phone P40 = new Phone() { PhoneId = 1,OSId = Android.OSId, BrandId = Huawei.BrandId };
-            Phone S21 = new Phone() { PhoneId = 2,OSId = Android.OSId, BrandId = Samsung.BrandId };
-            Phone W510 = new Phone() { PhoneId = 3,OSId = MOS.OSId, BrandId = Motorola.BrandId };
-            Phone SE = new Phone() { PhoneId = 4, OSId = IOS.OSId, BrandId = Iphone.BrandId };
-            Phone X = new Phone() { PhoneId = 5, OSId = IOS.OSId, BrandId = Iphone.BrandId };
+            Phone P40 = new Phone() { PhoneId = 1,OSId = Android.OSId, BrandId = Huawei.BrandId,break_level = 6};
+            Phone S21 = new Phone() { PhoneId = 2,OSId = Android.OSId, BrandId = Samsung.BrandId,break_level = 8 };
+            Phone W510 = new Phone() { PhoneId = 3,OSId = MOS.OSId, BrandId = Motorola.BrandId , break_level = 9 };
+            Phone SE = new Phone() { PhoneId = 4, OSId = IOS.OSId, BrandId = Iphone.BrandId , break_level = 9};
+            Phone X = new Phone() { PhoneId = 5, OSId = IOS.OSId, BrandId = Iphone.BrandId, break_level =3 };
             //Phone's Operating System
 
 

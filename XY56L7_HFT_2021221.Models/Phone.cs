@@ -30,5 +30,6 @@ namespace XY56L7_HFT_2021221.Models
 
         [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }
+        public int break_level { get; set; }
     }
 }
