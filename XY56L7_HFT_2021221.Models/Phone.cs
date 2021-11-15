@@ -30,6 +30,8 @@ namespace XY56L7_HFT_2021221.Models
 
         [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }
+        //What is the level on a scale of 10 that if u drop ur phone on the ground, it will break easily
+
         public int break_level { get; set; }
     }
 }

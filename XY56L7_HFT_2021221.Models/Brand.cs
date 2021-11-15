@@ -14,6 +14,7 @@ namespace XY56L7_HFT_2021221.Models
     {
         [Key]
         public int BrandId { get; set; }
+        //What is the level on a scale of 10 that the phone will go bad in the future?
 
         public int trust_level { get; set; }
 
@@ -27,6 +28,7 @@ namespace XY56L7_HFT_2021221.Models
         public int? Rating { get; set; }
 
         public virtual ICollection<Phone> Phones { get; set; }
+
         public Brand()
         {
             Phones = new HashSet<Phone>();

@@ -18,6 +18,7 @@ namespace XY56L7_HFT_2021221.Models
        
         [MaxLength(120)]
         public string OS { get; set; }
+        //What is the level on a scale of 10 to hack the phone?
 
         public int security_level { get; set; }
 
