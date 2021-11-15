@@ -3,7 +3,7 @@ using XY56L7_HFT_2021221.Models;
 
 namespace XY56L7_HFT_2021221.Repository
 {
-    interface IOSYSTEMRepository
+   public  interface IOSYSTEMRepository
     {
         void Create(OSYSTEM Osystem);
         void Delete(int id);

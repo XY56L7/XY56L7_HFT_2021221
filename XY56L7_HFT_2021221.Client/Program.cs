@@ -19,10 +19,11 @@ namespace XY56L7_HFT_2021221.Client
             PhoneRepository phoneRepo = new PhoneRepository(db);
             OSYSTEM Android = new Models.OSYSTEM() { OSId = 100, OS = "Android" };
             Brand Samsung = new Brand() { BrandId = 33, Category = "Okos telefon", Rating = 6 };
-            Phone P40 = new Phone() { PhoneId = 6, OSId = Android.OSId, BrandId = Samsung.BrandId };
+            Phone P40 = new Phone() {  OSId = Android.OSId, BrandId = Samsung.BrandId };
             phoneRepo.Create(P40);
             var dataz = phoneRepo.ReadAll();
-            
+            BrandLogic cl = new BrandLogic(new BrandRepository(db));
+            var q = cl.AVGBestRating();
             //var data = db.Phones.ToArray();
             ;
 

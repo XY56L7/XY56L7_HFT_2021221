@@ -13,7 +13,7 @@ namespace XY56L7_HFT_2021221.Models
     public class Phone
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         
         public int PhoneId { get; set; }
 
