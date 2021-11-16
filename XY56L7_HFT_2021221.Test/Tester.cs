@@ -2,7 +2,7 @@
 
 namespace XY56L7_HFT_2021221.Test
 {
-    public class Class1
+    public class Tester
     {
     }
 }
