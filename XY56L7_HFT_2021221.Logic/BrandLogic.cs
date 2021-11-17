@@ -17,6 +17,26 @@ namespace XY56L7_HFT_2021221.Logic
         }
         public void Create(Brand PhoneAZ)
         {
+            if (PhoneAZ.Rating < 1)
+            {
+                throw new ArgumentException("Minus number is not allowed");
+            }
+            else if (PhoneAZ.Category == "")
+            {
+                throw new ArgumentException("Category can not be empty");
+            }
+            else if(PhoneAZ.trust_level < 1)
+            {
+                throw new ArgumentException("Minus number is not allowed");
+            }
+            else if (PhoneAZ.trust_level > 10)
+            {
+                throw new ArgumentException("The number can not be bigger than ten");
+            }
+            else if (PhoneAZ.Rating > 10)
+            {
+                throw new ArgumentException("The number can not be bigger than ten");
+            }
             brandRepo.Create(PhoneAZ);
         }
         public Brand Read(int id)
@@ -52,7 +72,22 @@ namespace XY56L7_HFT_2021221.Logic
         {
             return brandRepo.ReadAll().Max(t => t.Rating);
         }
-
+        public int Count() 
+        {
+            return brandRepo.ReadAll().Count();
+        }
+        public int Sum_Rating()
+        {
+            return brandRepo.ReadAll().Sum(t => t.Rating);
+        }
+        public int Worsttrustinglevel()
+        {
+            return brandRepo.ReadAll().Min(t => t.trust_level);
+        }
+        public int Besttrustinglevel()
+        {
+            return brandRepo.ReadAll().Min(t => t.trust_level);
+        }
 
     }
 }
