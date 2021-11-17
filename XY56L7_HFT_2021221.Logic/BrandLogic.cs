@@ -41,16 +41,16 @@ namespace XY56L7_HFT_2021221.Logic
 
         }
         //non-crud metódus
-        public double AVGBestRating() 
+        public double AVGRating() 
         {
-            return brandRepo.ReadAll().Average(t => t.trust_level);
+            return brandRepo.ReadAll().Average(t => t.Rating);
         }
         public int WorstRating() {
-            return brandRepo.ReadAll().Min(t => t.trust_level);
+            return brandRepo.ReadAll().Min(t => t.Rating);
         }
         public int BestRating()
         {
-            return brandRepo.ReadAll().Max(t => t.trust_level);
+            return brandRepo.ReadAll().Max(t => t.Rating);
         }
 
 

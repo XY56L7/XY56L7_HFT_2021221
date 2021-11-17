@@ -23,7 +23,7 @@ namespace XY56L7_HFT_2021221.Client
             phoneRepo.Create(P40);
             var dataz = phoneRepo.ReadAll();
             BrandLogic cl = new BrandLogic(new BrandRepository(db));
-            var q = cl.AVGBestRating();
+            var q = cl.AVGRating();
             //var data = db.Phones.ToArray();
             ;
 

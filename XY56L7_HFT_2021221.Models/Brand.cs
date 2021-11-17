@@ -25,7 +25,7 @@ namespace XY56L7_HFT_2021221.Models
         public string AllData => $"{BrandId}  : {Category}" +
             $" : {Rating} : {Phones.Count()}";
         
-        public int? Rating { get; set; }
+        public int Rating { get; set; }
 
         public virtual ICollection<Phone> Phones { get; set; }
 
