@@ -7,8 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using XY56L7_HFT_2021221.Data;
+using XY56L7_HFT_2021221.Logic;
+using XY56L7_HFT_2021221.Repository;
 
-namespace XY56L7_HFT_2021221.Endpoint
+namespace XY56L7_HFT_2021221.EndPoint
 {
     public class Startup
     {
@@ -17,6 +20,21 @@ namespace XY56L7_HFT_2021221.Endpoint
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddTransient<IPhoneLogic, PhoneLogic>();
+            services.AddTransient<IBrandLogic, BrandLogic>();
+            services.AddTransient<IOSYSTEMLogic, OSYSTEMLogic>();
+
+            services.AddTransient<IPhoneRepository, PhoneRepository>();
+            services.AddTransient<IBrandRepository, BrandRepository>();
+            services.AddTransient<IOSYSTEMRepository, OSYSTEMRepository>();
+
+            services.AddTransient<PhoneDbContext, PhoneDbContext>();
+
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

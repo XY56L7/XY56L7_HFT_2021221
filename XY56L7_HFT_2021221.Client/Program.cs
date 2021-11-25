@@ -25,7 +25,7 @@ namespace XY56L7_HFT_2021221.Client
             BrandLogic cl = new BrandLogic(new BrandRepository(db));
             var q = cl.AVGRating();
             //var data = db.Phones.ToArray();
-            ;
+            
 
             
 

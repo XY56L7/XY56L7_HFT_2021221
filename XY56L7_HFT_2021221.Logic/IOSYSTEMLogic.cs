@@ -3,7 +3,7 @@ using XY56L7_HFT_2021221.Models;
 
 namespace XY56L7_HFT_2021221.Logic
 {
-    interface IOSYSTEMLogic
+    public interface IOSYSTEMLogic
     {
         void Create(OSYSTEM PhoneAZ);
         void Delete(int id);

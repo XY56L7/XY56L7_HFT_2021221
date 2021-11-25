@@ -8,7 +8,7 @@ using XY56L7_HFT_2021221.Repository;
 
 namespace XY56L7_HFT_2021221.Logic
 {
-    class OSYSTEMLogic : IOSYSTEMLogic
+    public class OSYSTEMLogic : IOSYSTEMLogic
     {
         IOSYSTEMRepository OSdRepo;
         public OSYSTEMLogic(IOSYSTEMRepository OSdRepo)
