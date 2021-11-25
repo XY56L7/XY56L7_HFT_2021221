@@ -16,6 +16,7 @@ namespace XY56L7_HFT_2021221.Logic
         public void Create(Phone PhoneAZ)
         {
             carRepo.Create(PhoneAZ);
+            
         }
         public Phone Read(int id)
         {

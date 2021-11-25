@@ -6,50 +6,51 @@ using System.Threading.Tasks;
 using XY56L7_HFT_2021221.Logic;
 using XY56L7_HFT_2021221.Models;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace XY56L7_HFT_2021221.EndPoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class PhoneController : ControllerBase
+    public class OSYSTEMController : ControllerBase
     {
-        IPhoneLogic cl;
-        public PhoneController(IPhoneLogic cl)
+        IOSYSTEMLogic cl;
+        public OSYSTEMController(IOSYSTEMLogic cl )
         {
             this.cl = cl;
         }
-        // GET: /phone
+        // GET: /OSYSTEM
         [HttpGet]
-        public IEnumerable<Phone> Get()
+        public IEnumerable<OSYSTEM> Get()
         {
-            return cl.ReadAll() ;
+            return cl.ReadAll(); ;
         }
 
-        // GET /phone
+        // GET /OSYSTEM
         [HttpGet("{id}")]
-        public Phone Get(int id)
+        public OSYSTEM Get(int id)
         {
             return cl.Read(id);
         }
 
-        // POST /phone
+        // POST /OSYSTEM
         [HttpPost]
-        public void Post([FromBody] Phone value)
+        public void Post([FromBody] OSYSTEM value)
         {
             cl.Create(value);
         }
 
-        // PUT /car
+        // PUT /OSYSTEM
         [HttpPut("{id}")]
-        public void Put([FromBody] Phone value)
+        public void Put(int id, [FromBody] string value)
         {
-            cl.Update(value);
+
         }
 
-        // DELETE /car
+        // DELETE /OSYSTEM
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            cl.Delete(id);
         }
     }
 }

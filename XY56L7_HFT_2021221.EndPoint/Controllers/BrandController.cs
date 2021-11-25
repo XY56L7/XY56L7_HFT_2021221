@@ -6,46 +6,48 @@ using System.Threading.Tasks;
 using XY56L7_HFT_2021221.Logic;
 using XY56L7_HFT_2021221.Models;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace XY56L7_HFT_2021221.EndPoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class PhoneController : ControllerBase
+    public class BrandController : ControllerBase
     {
-        IPhoneLogic cl;
-        public PhoneController(IPhoneLogic cl)
+        IBrandLogic cl;
+        public BrandController(IBrandLogic cl)
         {
             this.cl = cl;
         }
-        // GET: /phone
-        [HttpGet]
-        public IEnumerable<Phone> Get()
+        // GET: /brand
+        // [HttpGet]
+        public IEnumerable<Brand> Get()
         {
-            return cl.ReadAll() ;
+            return cl.ReadAll();
         }
 
-        // GET /phone
+        // GET /brand
         [HttpGet("{id}")]
-        public Phone Get(int id)
+        public Brand Get(int id)
         {
             return cl.Read(id);
         }
 
-        // POST /phone
+        // POST /brand
         [HttpPost]
-        public void Post([FromBody] Phone value)
+        public void Post([FromBody] Brand value)
         {
             cl.Create(value);
         }
 
-        // PUT /car
+        // PUT /brand
         [HttpPut("{id}")]
-        public void Put([FromBody] Phone value)
+        public void Put([FromBody] Brand value)
         {
             cl.Update(value);
         }
 
-        // DELETE /car
+        // DELETE /brand
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
