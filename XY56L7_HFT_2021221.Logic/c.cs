@@ -3,9 +3,8 @@ using XY56L7_HFT_2021221.Models;
 
 namespace XY56L7_HFT_2021221.Logic
 {
-    public interface IPhoneLogic
+    public interface c
     {
-        double AVGRating();
         void Create(Phone PhoneAZ);
         void Delete(int id);
         Phone Read(int id);
