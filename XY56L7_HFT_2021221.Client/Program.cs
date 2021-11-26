@@ -17,6 +17,7 @@ namespace XY56L7_HFT_2021221.Client
 
             var brands = ss.Get<Brand>("brand");
             ;
+
             //PhoneDbContext db = new PhoneDbContext();
             //PhoneRepository phoneRepo = new PhoneRepository(db);
             //OSYSTEM Android = new Models.OSYSTEM() { OSId = 100, OS = "Android" };
