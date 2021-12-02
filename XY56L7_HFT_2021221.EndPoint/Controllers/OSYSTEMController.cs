@@ -41,7 +41,7 @@ namespace XY56L7_HFT_2021221.EndPoint.Controllers
         }
 
         // PUT /OSYSTEM
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] OSYSTEM value)
         {
             cl.Update(value);

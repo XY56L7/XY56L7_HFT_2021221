@@ -41,7 +41,7 @@ namespace XY56L7_HFT_2021221.EndPoint.Controllers
         }
 
         // PUT /brand
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Brand value)
         {
             cl.Update(value);

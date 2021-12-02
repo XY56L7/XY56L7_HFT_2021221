@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace XY56L7_HFT_2021221.Models
 {
-    public class ToStringAttribute : Attribute
+    class ToStringAttribute : Attribute
     {
 
     }
@@ -31,7 +31,7 @@ namespace XY56L7_HFT_2021221.Models
 
         [NotMapped]
         public string AllData => $"{BrandId}  : {Category}" +
-            $" : {Rating} : {Phones.Count()}";
+            $" : {Rating} : {trust_level} : {Phones.Count()}";
         [ToString]
         public int Rating { get; set; }
        

@@ -38,8 +38,8 @@ namespace XY56L7_HFT_2021221.EndPoint.Controllers
             cl.Create(value);
         }
 
-        // PUT /car
-        [HttpPut("{id}")]
+        // PUT /phone
+        [HttpPut]
         public void Put([FromBody] Phone value)
         {
             cl.Update(value);
