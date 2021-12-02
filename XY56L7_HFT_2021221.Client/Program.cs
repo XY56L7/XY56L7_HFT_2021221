@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ConsoleTools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using XY56L7_HFT_2021221.Data;
+using XY56L7_HFT_2021221.Logic;
 using XY56L7_HFT_2021221.Models;
-
-
+using XY56L7_HFT_2021221.Repository;
 
 namespace XY56L7_HFT_2021221.Client
 {
@@ -13,31 +14,43 @@ namespace XY56L7_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            RestService ss = new RestService("http://localhost:15113");
+            //RestService ss = new RestService("http://localhost:15113");
 
-            var brands = ss.Get<Brand>("brand");
-            ;
+            //var brands = ss.Get<Brand>("brand");
+            //;
 
-            //PhoneDbContext db = new PhoneDbContext();
-            //PhoneRepository phoneRepo = new PhoneRepository(db);
-            //OSYSTEM Android = new Models.OSYSTEM() { OSId = 100, OS = "Android" };
-            //Brand Samsung = new Brand() { BrandId = 33, Category = "Okos telefon", Rating = 6 };
-            //Phone P40 = new Phone() {  OSId = Android.OSId, BrandId = Samsung.BrandId };
-            //phoneRepo.Create(P40);
-            //var dataz = phoneRepo.ReadAll();
-            //BrandLogic cl = new BrandLogic(new BrandRepository(db));
-            //var q = cl.AVGRating();
-            //PhoneLogic cc = new PhoneLogic(new PhoneRepository(db));
-            //var t = cc.AVGRating();
-            ////var data = db.Phones.ToArray();
+            PhoneDbContext ctx = new PhoneDbContext();
+            Console.WriteLine(ctx.Phones.Count());
             
+            BrandRepository repo = new BrandRepository(ctx);
+            BrandLogic logic = new BrandLogic(repo);
 
-            
-
-             
-
-            //Console.ReadLine();
-
+            var menu = new ConsoleMenu()
+                .Add(">> LIST ALL", () => ListAll(logic))
+                .Add(">> GET BY ID", () => GetById(logic))
+                
+                .Add(">> EXIT", ConsoleMenu.Close);
+            menu.Show();
         }
+        private static void ListAll(BrandLogic logic) 
+        {
+            Console.WriteLine("\n:: ALL PHONES::\n");
+            logic.ReadAll()
+                .ToList()
+                .ForEach(x => Console.WriteLine(x.AllData));
+            Console.ReadLine();
+        }
+        private static void GetById(BrandLogic logic)
+        {
+            Console.WriteLine("ENTER ID HERE: ");
+            int id = int.Parse(Console.ReadLine());
+
+            var q = logic.Read(id);
+
+            Console.WriteLine("\n:: SELECTED PHONE :: \n");
+            Console.WriteLine(q);
+            Console.ReadLine();
+        }
+       
     }
 }
