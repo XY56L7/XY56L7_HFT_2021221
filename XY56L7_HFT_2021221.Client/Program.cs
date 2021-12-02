@@ -25,6 +25,7 @@ namespace XY56L7_HFT_2021221.Client
             BrandRepository repo = new BrandRepository(ctx);
             BrandLogic logic = new BrandLogic(repo);
 
+
             var menu = new ConsoleMenu()
                 .Add(">> LIST ALL", () => ListAll(logic))
                 .Add(">> GET BY ID", () => GetById(logic))
