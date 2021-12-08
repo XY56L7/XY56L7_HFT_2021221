@@ -30,6 +30,7 @@ namespace XY56L7_HFT_2021221.Client
             //}
 
 
+
             var menu = new ConsoleMenu()
                 .Add(">> LIST ALL", () => ListAll(ss))
                 .Add(">> GET BY ID", () => GetById(ss))
