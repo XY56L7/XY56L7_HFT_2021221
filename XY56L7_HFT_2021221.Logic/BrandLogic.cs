@@ -25,7 +25,7 @@ namespace XY56L7_HFT_2021221.Logic
             {
                 throw new ArgumentException("Category can not be empty");
             }
-            else if(PhoneAZ.trust_level < 1)
+            else if (PhoneAZ.trust_level < 1)
             {
                 throw new ArgumentException("Minus number is not allowed");
             }
@@ -61,18 +61,19 @@ namespace XY56L7_HFT_2021221.Logic
 
         }
         //non-crud metódus
-        public double AVGRating() 
+        public double AVGRatingBrand()
         {
             return brandRepo.ReadAll().Average(t => t.Rating);
         }
-        public int WorstRating() {
+        public int WorstRating()
+        {
             return brandRepo.ReadAll().Min(t => t.Rating);
         }
         public int BestRating()
         {
             return brandRepo.ReadAll().Max(t => t.Rating);
         }
-        public int Count() 
+        public int Count()
         {
             return brandRepo.ReadAll().Count();
         }
@@ -86,7 +87,7 @@ namespace XY56L7_HFT_2021221.Logic
         }
         public int Besttrustinglevel()
         {
-            return brandRepo.ReadAll().Min(t => t.trust_level);
+            return brandRepo.ReadAll().Max(t => t.trust_level);
         }
 
     }
