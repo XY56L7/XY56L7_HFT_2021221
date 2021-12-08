@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using XY56L7_HFT_2021221.Data;
-using XY56L7_HFT_2021221.Logic;
+
 using XY56L7_HFT_2021221.Models;
-using XY56L7_HFT_2021221.Repository;
+
 
 namespace XY56L7_HFT_2021221.Client
 {
@@ -19,16 +19,11 @@ namespace XY56L7_HFT_2021221.Client
             var brands = ss.Get<Brand>("brand");
             
 
-            PhoneDbContext ctx = new PhoneDbContext();
-            Console.WriteLine(ctx.Phones.Count());
             
-            BrandRepository repo = new BrandRepository(ctx);
-            BrandLogic logic = new BrandLogic(repo);
-            //foreach (var item in logic.ReadAll())
-            //{
-            //    Console.WriteLine(item);
-            //}
+            
+  
 
+        
 
 
             var menu = new ConsoleMenu()
@@ -37,6 +32,13 @@ namespace XY56L7_HFT_2021221.Client
                  .Add(">> CREATE", () => Create(ss))
                  .Add(">> UPDATE", () => Update(ss))
                  .Add(">> DELETE", () => Delete(ss))
+                 .Add(">> AVERAGE RATING AT PHONE", () => AVGRATING(ss))
+                 .Add(">> AVERAGE RATING AT BRAND", () => AVGRATINGBRAND(ss))
+                 .Add(">> BEST RATING AT BRAND", () => BestRatingBrand(ss))
+                 .Add(">> WORST RATING AT BRAND", () => WorstRatingBrand(ss))
+                 .Add(">> WORST TRUSTING LEVEL AT BRAND", () => WorstTrustingLevel(ss))
+                 .Add(">> BEST RATING AT BRAND", () => BestRatingBrand(ss))
+                 .Add(">> NUMBER OF BRANDs", () => Count(ss))
                 .Add(">> EXIT", ConsoleMenu.Close);
             menu.Show();
         }
@@ -279,7 +281,55 @@ namespace XY56L7_HFT_2021221.Client
 
 
         }
-        
-       
+        private static void AVGRATING(RestService ss) 
+        {
+            double date = ss.GetSingle<double>("stat/avgrating");
+            Console.WriteLine($"Average rating at phones: {date}");
+            Console.ReadLine();
+            
+        }
+        private static void AVGRATINGBRAND(RestService ss)
+        {
+            double date = ss.GetSingle<double>("stat/avgratingbrand");
+            Console.WriteLine($"Average rating at brands: {date}");
+            Console.ReadLine();
+
+        }
+        private static void BestRatingBrand(RestService ss)
+        {
+            double date = ss.GetSingle<double>("stat/bestrating");
+            Console.WriteLine($"Best rating at brands: {date}");
+            Console.ReadLine();
+
+        }
+        private static void WorstRatingBrand(RestService ss)
+        {
+            double date = ss.GetSingle<double>("stat/worstrating");
+            Console.WriteLine($"Worst rating at brands: {date}");
+            Console.ReadLine();
+
+        }
+        private static void Count(RestService ss)
+        {
+            double date = ss.GetSingle<double>("stat/count");
+            Console.WriteLine($"Number of Brands: {date}");
+            Console.ReadLine();
+
+        }
+        private static void BestTrustingLevel(RestService ss)
+        {
+            double date = ss.GetSingle<double>("stat/besttrustinglevel");
+            Console.WriteLine($"Best Trusing Level at Brands: {date}");
+            Console.ReadLine();
+
+        }
+        private static void WorstTrustingLevel(RestService ss)
+        {
+            double date = ss.GetSingle<double>("stat/worsttrustinglevel");
+            Console.WriteLine($"Worst Trusing Level at Brands: {date}");
+            Console.ReadLine();
+
+        }
+
     }
 }
