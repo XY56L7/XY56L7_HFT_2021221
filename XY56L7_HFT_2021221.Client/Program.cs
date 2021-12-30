@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using XY56L7_HFT_2021221.Data;
-
 using XY56L7_HFT_2021221.Models;
-
 
 namespace XY56L7_HFT_2021221.Client
 {
@@ -47,7 +45,8 @@ namespace XY56L7_HFT_2021221.Client
         }
         private static void ListAll(RestService ss) 
         {
-            Console.WriteLine("[1] BRAND [2] PHONE [3] OSYSTEM");
+            Console.Clear();
+            Console.Write("[1] BRAND [2] PHONE [3] OSYSTEM\nAnswer: ");
             int ans = int.Parse(Console.ReadLine());
             if (ans == 1)
             {
@@ -56,6 +55,7 @@ namespace XY56L7_HFT_2021221.Client
                 {
                     Console.WriteLine(item.AllData);
                 }
+                Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
             }
             else if (ans == 2)
@@ -65,6 +65,7 @@ namespace XY56L7_HFT_2021221.Client
                 {
                     Console.WriteLine(item.MainData);
                 }
+                Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
             }
             else if (ans == 3)
@@ -74,23 +75,26 @@ namespace XY56L7_HFT_2021221.Client
                 {
                     Console.WriteLine(item.AllData);
                 }
+                Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
             }
 
         }
         private static void GetById(RestService ss)
         {
-            Console.WriteLine("[1] BRAND [2] OSYSTEM [3] PHONE");
+            Console.Clear();
+            Console.Write("[1] BRAND [2] OSYSTEM [3] PHONE\nAnswer:");
             int ans = int.Parse(Console.ReadLine());
             if (ans == 1)
             {
                 Console.WriteLine("ENTER ID HERE: ");
                 int id = int.Parse(Console.ReadLine());
 
-
+                Console.Clear();
                 Console.WriteLine(ss.Get<Brand>(id, "brand").AllData);
                 Console.WriteLine("\n:: SELECTED BRAND :: \n");
 
+                Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
             }
             else if (ans == 2)
@@ -98,30 +102,33 @@ namespace XY56L7_HFT_2021221.Client
                 Console.WriteLine("ENTER ID HERE: ");
                 int id = int.Parse(Console.ReadLine());
 
-
+                Console.Clear();
                 Console.WriteLine(ss.Get<OSYSTEM>(id, "osystem").AllData);
                 Console.WriteLine("\n:: SELECTED BRAND :: \n");
 
+                Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
             }
             else if (ans == 3)
             {
                 Console.WriteLine("ENTER ID HERE: ");
                 int id = int.Parse(Console.ReadLine());
-
+                Console.Clear();
 
                 Console.WriteLine(ss.Get<Phone>(id, "phone").MainData);
                 Console.WriteLine("\n:: SELECTED PHONES :: \n");
 
+                Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
             }
 
         }
         private static void Create(RestService ss)
         {
+            Console.Clear();
             Console.WriteLine("[1] BRAND [2] PHONE [3] OSYSTEM");
             Console.WriteLine("From BrandID, CHOOSE FROM THESE: 22,33,44,55,66");
-            Console.WriteLine("FROM OSID, CHOOSE FROM THESE: 100,101,102");
+            Console.Write("FROM OSID, CHOOSE FROM THESE: 100,101,102\nAnswer: ");
             int anss = int.Parse(Console.ReadLine());
             if (anss == 1)
             {
@@ -131,6 +138,7 @@ namespace XY56L7_HFT_2021221.Client
                 int z = int.Parse(Console.ReadLine());
                 Console.WriteLine("Trust level: ");
                 int o = int.Parse(Console.ReadLine());
+                Console.Clear();
                 Brand newbrand = new Brand() { Category = ans, Rating = z, trust_level = o };
                 ss.Post<Brand>(newbrand, "brand");
                 Console.WriteLine("\n:: ALL BRANDS::\n");
@@ -139,6 +147,7 @@ namespace XY56L7_HFT_2021221.Client
                     Console.WriteLine(item.AllData);
                 }
                 Console.WriteLine("Mission Completed");
+                Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
             }
             else if (anss == 2)
@@ -151,6 +160,7 @@ namespace XY56L7_HFT_2021221.Client
                 int o = int.Parse(Console.ReadLine());
                 Console.WriteLine("OSID: ");
                 int a = int.Parse(Console.ReadLine());
+                Console.Clear();
                 Phone newphone = new Phone() { break_level = z,BrandId=o, OSId=a};
                 ss.Post<Phone>(newphone, "phone");
                 Console.WriteLine("\n:: ALL PHONES::\n");
@@ -159,6 +169,7 @@ namespace XY56L7_HFT_2021221.Client
                     Console.WriteLine(item.MainData);
                 }
                 Console.WriteLine("Mission Completed");
+                Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
             }
             else if (anss == 3)
@@ -169,6 +180,7 @@ namespace XY56L7_HFT_2021221.Client
                 int z = int.Parse(Console.ReadLine());
                 Console.WriteLine("Trust level: ");
                 int o = int.Parse(Console.ReadLine());
+                Console.Clear();
                 OSYSTEM newbrand = new OSYSTEM() { OS=ans,security_level=z};
                 ss.Post<OSYSTEM>(newbrand, "osystem");
                 Console.WriteLine("\n:: ALL OSYSTEMS::\n");
@@ -177,15 +189,17 @@ namespace XY56L7_HFT_2021221.Client
                     Console.WriteLine(item.AllData);
                 }
                 Console.WriteLine("Mission Completed");
+                Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
             }
 
         }
         private static void Delete(RestService ss) 
         {
+            Console.Clear();
             Console.WriteLine("[1] BRAND [2] PHONE [3] OSYSTEM");
             Console.WriteLine("From BrandID, CHOOSE FROM THESE: 22,33,44,55,66");
-            Console.WriteLine("FROM OSID, CHOOSE FROM THESE: 100,101,102");
+            Console.Write("FROM OSID, CHOOSE FROM THESE: 100,101,102\nAnswer:");
             int anss = int.Parse(Console.ReadLine());
             if (anss == 1)
             {
@@ -193,6 +207,8 @@ namespace XY56L7_HFT_2021221.Client
                 int id = int.Parse(Console.ReadLine());
                 ss.Delete(id, "brand");
                 Console.WriteLine("Row has been deleted");
+                Console.WriteLine("Press enter to return to the main menu");
+                Console.ReadLine();
             }
             else if (anss == 2)
             {
@@ -200,6 +216,8 @@ namespace XY56L7_HFT_2021221.Client
                 int id = int.Parse(Console.ReadLine());
                 ss.Delete(id, "phone");
                 Console.WriteLine("Row has been deleted");
+                Console.WriteLine("Press enter to return to the main menu");
+                Console.ReadLine();
             }
             else if (anss == 3)
             {
@@ -207,15 +225,18 @@ namespace XY56L7_HFT_2021221.Client
                 int id = int.Parse(Console.ReadLine());
                 ss.Delete(id, "osystem");
                 Console.WriteLine("Row has been deleted");
+                Console.WriteLine("Press enter to return to the main menu");
+                Console.ReadLine();
             }
 
 
         }
         private static void Update(RestService ss) 
         {
+            Console.Clear();
             Console.WriteLine("[1] BRAND [2] PHONE [3] OSYSTEM");
             Console.WriteLine("From BrandID, CHOOSE FROM THESE: 22,33,44,55,66");
-            Console.WriteLine("FROM OSID, CHOOSE FROM THESE: 100,101,102");
+            Console.Write("FROM OSID, CHOOSE FROM THESE: 100,101,102\nAnswer:");
             int anss = int.Parse(Console.ReadLine());
             if (anss == 1)
             {
@@ -230,6 +251,8 @@ namespace XY56L7_HFT_2021221.Client
                 Brand cl = new Brand() { Category = cat, BrandId = a, trust_level = tl, Rating = r };
                 ss.Put<Brand>(cl, "brand");
                 Console.WriteLine("Mission Completed");
+                Console.WriteLine("Press enter to return to the main menu");
+
                 Console.ReadLine();
             }
             else if (anss == 2)
@@ -246,7 +269,8 @@ namespace XY56L7_HFT_2021221.Client
                 Phone newphone = new Phone() { PhoneId=e, break_level = z, BrandId = o, OSId = a };
                 ss.Put<Phone>(newphone, "phone");
                 Console.WriteLine("Mission Completed");
-      
+            Console.WriteLine("Press enter to return to the main menu");
+
                 Console.ReadLine();
             }
             else if (anss == 2)
@@ -263,6 +287,7 @@ namespace XY56L7_HFT_2021221.Client
                 Phone newphone = new Phone() { PhoneId = e, break_level = z, BrandId = o, OSId = a };
                 ss.Put<Phone>(newphone, "phone");
                 Console.WriteLine("Mission Completed");
+                Console.WriteLine("Press enter to return to the main menu");
 
                 Console.ReadLine();
             }
@@ -277,7 +302,8 @@ namespace XY56L7_HFT_2021221.Client
                 OSYSTEM newbrand = new OSYSTEM() { OSId=el, OS = ans, security_level = o };
                 ss.Put<OSYSTEM>(newbrand, "osystem");
                 Console.WriteLine("Mission Completed");
-        
+            Console.WriteLine("Press enter to return to the main menu");
+
                 Console.ReadLine();
             }
 
@@ -286,35 +312,66 @@ namespace XY56L7_HFT_2021221.Client
         }
         private static void AVGRATING(RestService ss) 
         {
+            Console.Clear();
             double date = ss.GetSingle<double>("stat/avgrating");
             Console.WriteLine($"Average rating at phones: {date}");
+            Console.WriteLine("Press enter to return to the main menu");
+
             Console.ReadLine();
             
         }
         private static void AVGRATINGBRAND(RestService ss)
         {
+            Console.Clear();
             double date = ss.GetSingle<double>("stat/avgratingbrand");
             Console.WriteLine($"Average rating at brands: {date}");
+            Console.WriteLine("Press enter to return to the main menu");
+
             Console.ReadLine();
 
         }
         private static void BestRatingBrand(RestService ss)
         {
+            Console.Clear();
             double date = ss.GetSingle<double>("stat/bestrating");
             Console.WriteLine($"Best rating at brands: {date}");
+            Console.WriteLine("Press enter to return to the main menu");
+
             Console.ReadLine();
 
         }
         private static void WorstRatingBrand(RestService ss)
         {
+            Console.Clear();
             double date = ss.GetSingle<double>("stat/worstrating");
             Console.WriteLine($"Worst rating at brands: {date}");
+            Console.WriteLine("Press enter to return to the main menu");
+
             Console.ReadLine();
 
 
 
         }
-        
-       
+        private static void Count(RestService ss)
+        {
+            Console.Clear();
+            double date = ss.GetSingle<double>("stat/count");
+            Console.WriteLine($"Number of brands: {date}");
+            Console.WriteLine("Press enter to return to the main menu");
+
+            Console.ReadLine();
+
+        }
+        private static void WorstTrustingLevel(RestService ss)
+        {
+            Console.Clear();
+            double date = ss.GetSingle<double>("stat/worsttrustinglevel");
+            Console.WriteLine($"Worst trusting level at brands: {date}");
+            Console.WriteLine("Press enter to return to the main menu");
+            Console.ReadLine();
+
+        }
+
+
     }
 }
