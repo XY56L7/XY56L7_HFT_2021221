@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31605.320
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XY56L7_HFT_2021221.Client", "XY56L7_HFT_2021221.Client\XY56L7_HFT_2021221.Client.csproj", "{0267CEF7-A7AE-4362-8273-703DC65B0C4A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9EB4710C-1D77-4F45-B7F6-7C300CC694D8} = {9EB4710C-1D77-4F45-B7F6-7C300CC694D8}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XY56L7_HFT_2021221.Models", "XY56L7_HFT_2021221.Models\XY56L7_HFT_2021221.Models.csproj", "{E5AFA4A4-9582-44D7-8CEF-7E136B65576C}"
 EndProject
@@ -23,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{437655
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "others", "others", "{B4B9EBB4-A34C-4D0F-B874-10EF6F0AEC81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XY56L7_HFT_2021221.EndPoint", "XY56L7_HFT_2021221.EndPoint\XY56L7_HFT_2021221.EndPoint.csproj", "{9EB4710C-1D77-4F45-B7F6-7C300CC694D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XY56L7_HFT_2021221.EndPoint", "XY56L7_HFT_2021221.EndPoint\XY56L7_HFT_2021221.EndPoint.csproj", "{9EB4710C-1D77-4F45-B7F6-7C300CC694D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

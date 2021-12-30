@@ -76,15 +76,7 @@ namespace XY56L7_HFT_2021221.Test
             cl = new BrandLogic(
                 mockBrandRepo.Object);
         }
-        //TEST(1)
-        [Test]
-        public void BestPriceTest() 
-        {
-            //ACT
-            var result = cl.AVGRating();
-            //ASSERT
-            Assert.That(result, Is.EqualTo(6));
-        }
+       
         //TEST(2)
         [Test]
         public void WorstPriceTest()

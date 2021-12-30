@@ -51,7 +51,8 @@ namespace XY56L7_HFT_2021221.Logic
         {
             brandRepo.Delete(id);
         }
-        //meg be kell fejeznem
+       
+       
         public void Update(Brand Brand)
         {
             brandRepo.Update(Brand);

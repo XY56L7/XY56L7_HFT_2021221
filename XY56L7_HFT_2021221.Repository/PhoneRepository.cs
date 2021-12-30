@@ -36,7 +36,7 @@ namespace XY56L7_HFT_2021221.Repository
             db.Remove(Read(id));
             db.SaveChanges();
         }
-        //meg be kell fejeznem
+       
         public void Update(Phone phone)
         {
             var oldphone = Read(phone.PhoneId);

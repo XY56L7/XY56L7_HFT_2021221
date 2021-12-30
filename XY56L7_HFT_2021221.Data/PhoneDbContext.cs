@@ -23,7 +23,7 @@ namespace XY56L7_HFT_2021221.Data
         }
         
         protected override void OnConfiguring(DbContextOptionsBuilder 
-            optionsBuilder) 
+            optionsBuilder)  
         {
             if (!optionsBuilder.IsConfigured)
             {
