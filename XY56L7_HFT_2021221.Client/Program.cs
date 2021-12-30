@@ -18,7 +18,10 @@ namespace XY56L7_HFT_2021221.Client
 
        
 
-
+            PhoneDbContext ctx = new PhoneDbContext();
+            Console.WriteLine(ctx.Phones.Count());
+            
+         
 
  
 
@@ -308,28 +311,10 @@ namespace XY56L7_HFT_2021221.Client
             Console.WriteLine($"Worst rating at brands: {date}");
             Console.ReadLine();
 
-        }
-        private static void Count(RestService ss)
-        {
-            double date = ss.GetSingle<double>("stat/count");
-            Console.WriteLine($"Number of Brands: {date}");
-            Console.ReadLine();
+
 
         }
-        private static void BestTrustingLevel(RestService ss)
-        {
-            double date = ss.GetSingle<double>("stat/besttrustinglevel");
-            Console.WriteLine($"Best Trusing Level at Brands: {date}");
-            Console.ReadLine();
-
-        }
-        private static void WorstTrustingLevel(RestService ss)
-        {
-            double date = ss.GetSingle<double>("stat/worsttrustinglevel");
-            Console.WriteLine($"Worst Trusing Level at Brands: {date}");
-            Console.ReadLine();
-
-        }
-
+        
+       
     }
 }
