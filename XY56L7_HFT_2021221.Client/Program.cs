@@ -14,12 +14,17 @@ namespace XY56L7_HFT_2021221.Client
         {
             RestService ss = new RestService("http://localhost:15113");
 
+
        
 
             PhoneDbContext ctx = new PhoneDbContext();
             Console.WriteLine(ctx.Phones.Count());
             
          
+
+
+
+
 
  
 
