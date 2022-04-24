@@ -28,28 +28,40 @@ namespace XY56L7_HFT_2021221.WPFClient
         }
 
         public RestCollection<Brand> Brands { get; set; }
+        public static bool IsInDesignMode
+        {
+            get
+            {
+                var prop = DesignerProperties.IsInDesignModeProperty;
+                return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
+            }
+        }
         public MainWindowViewModel()
         {
-            Brands = new RestCollection<Brand>("http://localhost:38806/","brand");
-            CreateBrandCommand = new RelayCommand(() =>
-           {
-               Brands.Add(new Brand()
-               {
-                   BrandName = "Kiss Béla",
-                   Rating =4,
-                   trust_level=4
-               });
-           });
-            DeleteBrandCommand = new RelayCommand(() =>
+            if (!IsInDesignMode)
             {
-                Brands.Delete(SelectedBrand.BrandId);
+                Brands = new RestCollection<Brand>("http://localhost:38806/", "brand");
+                CreateBrandCommand = new RelayCommand(() =>
+                {
+                    Brands.Add(new Brand()
+                    {
+                        BrandName = "Kiss Béla",
+                        Rating = 4,
+                        trust_level = 4
+                    });
+                });
+                DeleteBrandCommand = new RelayCommand(() =>
+                {
+                    Brands.Delete(SelectedBrand.BrandId);
 
-            },
-            () => 
-            {
-                return SelectedBrand != null;
+                },
+                () =>
+                {
+                    return SelectedBrand != null;
+                }
+                );
             }
-            );
+            
         }
     }
 }
