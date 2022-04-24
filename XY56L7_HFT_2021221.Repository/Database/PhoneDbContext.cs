@@ -9,7 +9,7 @@ using Microsoft.Data.SqlClient;
 
 
 
-namespace XY56L7_HFT_2021221.Data
+namespace XY56L7_HFT_2021221.Repository.DataBase
 {
     public class PhoneDbContext : DbContext
     {
@@ -21,18 +21,17 @@ namespace XY56L7_HFT_2021221.Data
         {
             this.Database.EnsureCreated();
         }
-        
-        protected override void OnConfiguring(DbContextOptionsBuilder 
-            optionsBuilder)  
+
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            if (!optionsBuilder.IsConfigured)
+            if (!builder.IsConfigured)
             {
-                optionsBuilder
+                builder
                     .UseLazyLoadingProxies()
-                    .UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
+                    .UseInMemoryDatabase("phone");
             }
         }
-        
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,10 +39,10 @@ namespace XY56L7_HFT_2021221.Data
             
             #region INIT
             //Phone Brands
-            Brand Iphone = new Brand() { BrandId = 22, Category = "Okos telefon", Rating = 8 , trust_level = 9};
-            Brand Samsung = new Brand() { BrandId = 33, Category = "Okos telefon", Rating = 6 ,trust_level = 4 };
-            Brand Huawei = new Brand() { BrandId = 44, Category = "Okos telefon", Rating = 7, trust_level = 7 };
-            Brand Motorola = new Brand() { BrandId = 55, Category = "Gombos telefon", Rating = 2, trust_level = 4 };
+            Brand Iphone = new Brand() { BrandId = 22, BrandName="Iphone", Category = "Okos telefon", Rating = 8 , trust_level = 9};
+            Brand Samsung = new Brand() { BrandId = 33, BrandName="Samsung", Category = "Okos telefon", Rating = 6 ,trust_level = 4 };
+            Brand Huawei = new Brand() { BrandId = 44, BrandName = "Huawei", Category = "Okos telefon", Rating = 7, trust_level = 7 };
+            Brand Motorola = new Brand() { BrandId = 55, BrandName = "Motorola", Category = "Gombos telefon", Rating = 2, trust_level = 4 };
 
             OSYSTEM Android = new Models.OSYSTEM() { OSId = 100, OS = "Android",security_level = 6 };
             OSYSTEM IOS = new Models.OSYSTEM() { OSId = 101, OS = "IOS", security_level = 8 };
@@ -62,34 +61,8 @@ namespace XY56L7_HFT_2021221.Data
 
 
             #endregion
-            #region connections
-            //Brands connections
-            //Iphone.BrandId = SE.BrandId;
-            //Iphone.BrandId = X.BrandId;
-            //Samsung.BrandId = S21.BrandId;
-            //Huawei.BrandId = P40.BrandId;
-            //Motorola.BrandId = W510.BrandId;
-            ////OS Connections
-            //Android.OSId = P40.OSId;
-            //Android.OSId = S21.OSId;
-            //IOS.OSId = SE.OSId;
-            //IOS.OSId = X.OSId;
-            //MOS.OSId = W510.OSId;
-            #endregion
-            //db.Brands.Add(Iphone);
-            //db.Brands.Add(Samsung);
-            //db.Brands.Add(Huawei);
-            //db.Brands.Add(Motorola);
 
-            //db.OSES.Add(Android);
-            //db.OSES.Add(IOS);
-            //db.OSES.Add(MOS);
-
-            //db.Phones.Add(SE);
-            //db.Phones.Add(X);
-            //db.Phones.Add(P40);
-            //db.Phones.Add(S21);
-            //db.Phones.Add(W510);
+   
 
 
 

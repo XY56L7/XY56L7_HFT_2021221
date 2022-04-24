@@ -1,54 +1,51 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using XY56L7_HFT_2021221.Logic;
 using XY56L7_HFT_2021221.Logic.Interfaces;
 using XY56L7_HFT_2021221.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace XY56L7_HFT_2021221.EndPoint.Controllers
+namespace XY56L7_HFT_2021221.NewEndPoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class OSYSTEMController : ControllerBase
+    public class BrandController : ControllerBase
     {
-        IOSYSTEMLogic cl;
-        public OSYSTEMController(IOSYSTEMLogic cl )
+        IBrandLogic cl;
+        public BrandController(IBrandLogic cl)
         {
             this.cl = cl;
         }
-        // GET: /OSYSTEM
+        // GET: /brand
         [HttpGet]
-        public IEnumerable<OSYSTEM> Get()
+        public IEnumerable<Brand> Create()
         {
-            return cl.ReadAll(); ;
+            return cl.ReadAll();
         }
 
-        // GET /OSYSTEM
+        // GET /brand
         [HttpGet("{id}")]
-        public OSYSTEM Get(int id)
+        public Brand Read(int id)
         {
             return cl.Read(id);
         }
 
-        // POST /OSYSTEM
+        // POST /brand
         [HttpPost]
-        public void Post([FromBody] OSYSTEM value)
+        public void Create([FromBody] Brand value)
         {
             cl.Create(value);
         }
 
-        // PUT /OSYSTEM
+        // PUT /brand
         [HttpPut]
-        public void Put([FromBody] OSYSTEM value)
+        public void Uodate([FromBody] Brand value)
         {
             cl.Update(value);
         }
 
-        // DELETE /OSYSTEM
+        // DELETE /brand
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

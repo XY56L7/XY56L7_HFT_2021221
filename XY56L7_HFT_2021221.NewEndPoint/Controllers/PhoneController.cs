@@ -1,58 +1,55 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using XY56L7_HFT_2021221.Logic;
 using XY56L7_HFT_2021221.Logic.Interfaces;
 using XY56L7_HFT_2021221.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace XY56L7_HFT_2021221.EndPoint.Controllers
+namespace XY56L7_HFT_2021221.NewEndPoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class OSYSTEMController : ControllerBase
+    public class PhoneController : ControllerBase
     {
-        IOSYSTEMLogic cl;
-        public OSYSTEMController(IOSYSTEMLogic cl )
+        IPhoneLogic cl;
+        public PhoneController(IPhoneLogic cl)
         {
             this.cl = cl;
         }
-        // GET: /OSYSTEM
+        // GET: /phone
         [HttpGet]
-        public IEnumerable<OSYSTEM> Get()
+        public IEnumerable<Phone> Create()
         {
-            return cl.ReadAll(); ;
+            return cl.ReadAll();
         }
 
-        // GET /OSYSTEM
+        // GET /phone
         [HttpGet("{id}")]
-        public OSYSTEM Get(int id)
+        public Phone Read(int id)
         {
-            return cl.Read(id);
+            return this.cl.Read(id);
         }
 
-        // POST /OSYSTEM
+        // POST /phone
         [HttpPost]
-        public void Post([FromBody] OSYSTEM value)
+        public void Create([FromBody] Phone value)
         {
-            cl.Create(value);
+            this.cl.Create(value);
         }
 
-        // PUT /OSYSTEM
+        // PUT /phone
         [HttpPut]
-        public void Put([FromBody] OSYSTEM value)
+        public void Update([FromBody] Phone value)
         {
             cl.Update(value);
         }
 
-        // DELETE /OSYSTEM
+        // DELETE /car
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            cl.Delete(id);
+            this.cl.Delete(id);
         }
     }
 }

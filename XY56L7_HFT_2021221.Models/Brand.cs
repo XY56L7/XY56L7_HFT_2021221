@@ -10,29 +10,32 @@ using System.Threading.Tasks;
 
 namespace XY56L7_HFT_2021221.Models
 {
-    class ToStringAttribute : Attribute
-    {
+    //class ToStringAttribute : Attribute
+    //{
 
-    }
+    //}
     //blog
     [Table("Brands")]
     public class Brand
     {
         [Key]
-        [ToString]
+        //[ToString]
         public int BrandId { get; set; }
         //What is the level on a scale of 10 that the phone will go bad in the future?
-        [ToString]
+        //[ToString]
         public int trust_level { get; set; }
 
         [MaxLength(100)]
-        [ToString]
+        //[ToString]
         public string Category { get; set; }
+        [MaxLength(100)]
+        //[ToString]
+        public string BrandName { get; set; }
 
         [NotMapped]
-        public string AllData => $"{BrandId}  : {Category}" +
+        public string AllData => $"{BrandId} : {BrandName} : {Category}" +
             $" : {Rating} : {trust_level} : {Phones.Count()}";
-        [ToString]
+        //[ToString]
         public int Rating { get; set; }
        
         [NotMapped]
@@ -42,23 +45,24 @@ namespace XY56L7_HFT_2021221.Models
         {
             Phones = new HashSet<Phone>();
         }
-        public override string ToString()
-        {
-            string x = "";
 
-            foreach (var item in this.GetType().GetProperties().Where(x => x.GetCustomAttribute<ToStringAttribute>() != null))
-            {
-                x += "   ";
-                x += item.Name + "\t=> ";
-                x += item.GetValue(this);
-                x += "\n";
-            }
+        //public override string ToString()
+        //{
+        //    string x = "";
 
-            x += "   ";
-            x += "Phones\t=> ";
-            x += Phones.Count;
+        //    foreach (var item in this.GetType().GetProperties().Where(x => x.GetCustomAttribute<ToStringAttribute>() != null))
+        //    {
+        //        x += "   ";
+        //        x += item.Name + "\t=> ";
+        //        x += item.GetValue(this);
+        //        x += "\n";
+        //    }
 
-            return x;
-        }
+        //    x += "   ";
+        //    x += "Phones\t=> ";
+        //    x += Phones.Count;
+
+        //    return x;
+        //}
     }
 }

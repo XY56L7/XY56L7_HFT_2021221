@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using XY56L7_HFT_2021221.Logic;
+using XY56L7_HFT_2021221.Logic.Interfaces;
 using XY56L7_HFT_2021221.Models;
 
 namespace XY56L7_HFT_2021221.EndPoint.Controllers

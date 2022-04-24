@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,23 +20,20 @@ using XY56L7_HFT_2021221.Repository.DataBase;
 using XY56L7_HFT_2021221.Repository.GenericRepository;
 using XY56L7_HFT_2021221.Repository.ModellRepositories;
 
-namespace XY56L7_HFT_2021221.EndPoint
+namespace XY56L7_HFT_2021221.NewEndPoint
 {
-   
     public class Startup
     {
-        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-
-
             services.AddTransient<IPhoneLogic, PhoneLogic>();
             services.AddTransient<IBrandLogic, BrandLogic>();
             services.AddTransient<IOSYSTEMLogic, OSYSTEMLogic>();
@@ -48,14 +43,11 @@ namespace XY56L7_HFT_2021221.EndPoint
             services.AddTransient<IRepository<OSYSTEM>, OsystemRepository>();
 
             services.AddTransient<PhoneDbContext, PhoneDbContext>();
-
-
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "XY56L7_HFT_2021221.EndPoint", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "XY56L7_HFT_2021221.NewEndPoint", Version = "v1" });
             });
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,18 +57,8 @@ namespace XY56L7_HFT_2021221.EndPoint
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "XY56L7_HFT_2021221.EndPoint v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "XY56L7_HFT_2021221.NewEndPoint v1"));
             }
-
-            app.UseExceptionHandler(c => c.Run(async context =>
-            {
-                var exception = context.Features
-                    .Get<IExceptionHandlerPathFeature>()
-                    .Error;
-                var response = new { Msg = exception.Message };
-                await context.Response.WriteAsJsonAsync(response);
-            }));
-
 
             app.UseRouting();
 

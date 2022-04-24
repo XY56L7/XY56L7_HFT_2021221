@@ -1,52 +1,41 @@
 ﻿using ConsoleTools;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using XY56L7_HFT_2021221.Data;
+
 using XY56L7_HFT_2021221.Models;
+
+using XY56L7_HFT_2021221.Repository.DataBase;
 
 namespace XY56L7_HFT_2021221.Client
 {
     
     class Program
     {
+        static RestService ss;
         static void Main(string[] args)
         {
-            RestService ss = new RestService("http://localhost:15113");
-
-
-       
-
-            PhoneDbContext ctx = new PhoneDbContext();
-            Console.WriteLine(ctx.Phones.Count());
-            
-         
-
-
-
-
-
- 
-
-
-        
+             ss = new RestService("http://localhost:38806/","phone");
+            // PhoneDbContext ctx = new PhoneDbContext();
 
 
             var menu = new ConsoleMenu()
                 .Add(">> LIST ALL", () => ListAll(ss))
                 .Add(">> GET BY ID", () => GetById(ss))
-                 .Add(">> CREATE", () => Create(ss))
-                 .Add(">> UPDATE", () => Update(ss))
+                .Add(">> CREATE", () => Create(ss))
+                .Add(">> UPDATE", () => Update(ss))
                  .Add(">> DELETE", () => Delete(ss))
-                 .Add(">> AVERAGE RATING AT PHONE", () => AVGRATING(ss))
-                 .Add(">> AVERAGE RATING AT BRAND", () => AVGRATINGBRAND(ss))
-                 .Add(">> BEST RATING AT BRAND", () => BestRatingBrand(ss))
+                .Add(">> AVERAGE RATING AT PHONE", () => AVGRATING(ss))
+               .Add(">> AVERAGE RATING AT BRAND", () => AVGRATINGBRAND(ss))
+                .Add(">> BEST RATING AT BRAND", () => BestRatingBrand(ss))
                  .Add(">> WORST RATING AT BRAND", () => WorstRatingBrand(ss))
                  .Add(">> WORST TRUSTING LEVEL AT BRAND", () => WorstTrustingLevel(ss))
-                 .Add(">> BEST RATING AT BRAND", () => BestRatingBrand(ss))
+                .Add(">> BEST RATING AT BRAND", () => BestRatingBrand(ss))
                  .Add(">> NUMBER OF BRANDs", () => Count(ss))
                 .Add(">> EXIT", ConsoleMenu.Close);
             menu.Show();
+            
         }
         private static void ListAll(RestService ss) 
         {

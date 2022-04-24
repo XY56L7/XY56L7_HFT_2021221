@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using XY56L7_HFT_2021221.Logic.Interfaces;
 using XY56L7_HFT_2021221.Models;
 using XY56L7_HFT_2021221.Repository;
+using XY56L7_HFT_2021221.Repository.GenericRepository;
 
-namespace XY56L7_HFT_2021221.Logic
+namespace XY56L7_HFT_2021221.Logic.Classes
 {
     public class PhoneLogic : IPhoneLogic
     {
-        IPhoneRepository carRepo;
-        public PhoneLogic(IPhoneRepository carRepo)
+        IRepository<Phone> carRepo;
+        public PhoneLogic(IRepository<Phone> carRepo)
         {
             this.carRepo = carRepo;
         }

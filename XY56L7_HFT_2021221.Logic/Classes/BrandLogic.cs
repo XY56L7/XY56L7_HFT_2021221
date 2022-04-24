@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XY56L7_HFT_2021221.Logic.Interfaces;
 using XY56L7_HFT_2021221.Models;
 using XY56L7_HFT_2021221.Repository;
+using XY56L7_HFT_2021221.Repository.GenericRepository;
 
-namespace XY56L7_HFT_2021221.Logic
+namespace XY56L7_HFT_2021221.Logic.Classes
 {
     public class BrandLogic : IBrandLogic
     {
-        IBrandRepository brandRepo;
-        public BrandLogic(IBrandRepository brandRepo)
+        IRepository<Brand> brandRepo;
+        public BrandLogic(IRepository<Brand> brandRepo)
         {
             this.brandRepo = brandRepo;
         }
@@ -37,7 +39,7 @@ namespace XY56L7_HFT_2021221.Logic
             {
                 throw new ArgumentException("The number can not be bigger than ten");
             }
-            brandRepo.Create(PhoneAZ);
+            this.brandRepo.Create(PhoneAZ);
         }
         public Brand Read(int id)
         {
@@ -51,8 +53,8 @@ namespace XY56L7_HFT_2021221.Logic
         {
             brandRepo.Delete(id);
         }
-       
-       
+
+
         public void Update(Brand Brand)
         {
             brandRepo.Update(Brand);

@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XY56L7_HFT_2021221.Logic.Interfaces;
 using XY56L7_HFT_2021221.Models;
 using XY56L7_HFT_2021221.Repository;
+using XY56L7_HFT_2021221.Repository.GenericRepository;
 
-namespace XY56L7_HFT_2021221.Logic
+namespace XY56L7_HFT_2021221.Logic.Classes
 {
     public class OSYSTEMLogic : IOSYSTEMLogic
     {
-        IOSYSTEMRepository OSdRepo;
-        public OSYSTEMLogic(IOSYSTEMRepository OSdRepo)
+        IRepository<OSYSTEM> OSdRepo;
+        public OSYSTEMLogic(IRepository<OSYSTEM> OSdRepo)
         {
             this.OSdRepo = OSdRepo;
         }

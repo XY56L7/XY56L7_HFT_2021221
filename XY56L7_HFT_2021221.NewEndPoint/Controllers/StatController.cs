@@ -1,14 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using XY56L7_HFT_2021221.Logic;
+﻿using Microsoft.AspNetCore.Mvc;
 using XY56L7_HFT_2021221.Logic.Interfaces;
-using XY56L7_HFT_2021221.Models;
 
-namespace XY56L7_HFT_2021221.EndPoint.Controllers
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace XY56L7_HFT_2021221.NewEndPoint.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
@@ -16,7 +11,7 @@ namespace XY56L7_HFT_2021221.EndPoint.Controllers
     {
         IPhoneLogic cl;
         IBrandLogic bl;
-        public StatController(IPhoneLogic cl,IBrandLogic bl)
+        public StatController(IPhoneLogic cl, IBrandLogic bl)
         {
             this.cl = cl;
             this.bl = bl;
