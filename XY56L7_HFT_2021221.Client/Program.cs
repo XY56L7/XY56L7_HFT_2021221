@@ -47,7 +47,7 @@ namespace XY56L7_HFT_2021221.Client
                 Console.WriteLine("\n:: ALL BRANDS::\n");
                 foreach (var item in ss.Get<Brand>("brand"))
                 {
-                    Console.WriteLine(item.AllData);
+                    //Console.WriteLine(item.AllData);
                 }
                 Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
@@ -85,7 +85,7 @@ namespace XY56L7_HFT_2021221.Client
                 int id = int.Parse(Console.ReadLine());
 
                 Console.Clear();
-                Console.WriteLine(ss.Get<Brand>(id, "brand").AllData);
+                //Console.WriteLine(ss.Get<Brand>(id, "brand").AllData);
                 Console.WriteLine("\n:: SELECTED BRAND :: \n");
 
                 Console.WriteLine("Press enter to return to the main menu");
@@ -138,7 +138,7 @@ namespace XY56L7_HFT_2021221.Client
                 Console.WriteLine("\n:: ALL BRANDS::\n");
                 foreach (var item in ss.Get<Brand>("brand"))
                 {
-                    Console.WriteLine(item.AllData);
+                    //Console.WriteLine(item.AllData);
                 }
                 Console.WriteLine("Mission Completed");
                 Console.WriteLine("Press enter to return to the main menu");

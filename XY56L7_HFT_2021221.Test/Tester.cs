@@ -1,11 +1,16 @@
-﻿using Moq;
+﻿
+using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using XY56L7_HFT_2021221.Logic;
+using XY56L7_HFT_2021221.Logic.Classes;
+using XY56L7_HFT_2021221.Logic.Interfaces;
 using XY56L7_HFT_2021221.Models;
-using XY56L7_HFT_2021221.Repository;
+using XY56L7_HFT_2021221.Repository.GenericRepository;
+using XY56L7_HFT_2021221.Repository.ModellRepositories;
+using XY56L7_HFT_2021221.Repository.GenericRepository;
 
 namespace XY56L7_HFT_2021221.Test
 {
@@ -31,7 +36,7 @@ namespace XY56L7_HFT_2021221.Test
 
             public IQueryable<Brand> ReadAll()
             {
-               return new List<Brand>() 
+                return new List<Brand>()
                 {
                     new Brand()
                     {
@@ -53,6 +58,7 @@ namespace XY56L7_HFT_2021221.Test
             }
         }
         BrandLogic cl;
+       
         public Tester()
         {
             var brands = new List<Brand>()
@@ -69,14 +75,14 @@ namespace XY56L7_HFT_2021221.Test
                         trust_level = 7
                     }
                 }.AsQueryable();
-            
+
             var mockBrandRepo =
-                new Mock<IBrandRepository>();
-            mockBrandRepo.Setup((t) => t.ReadAll()).Returns(brands);
+                new Mock<BrandRepository>();
+            mockBrandRepo.Setup(t => t.ReadAll()).Returns(brands);
             cl = new BrandLogic(
                 mockBrandRepo.Object);
         }
-       
+
         //TEST(2)
         [Test]
         public void WorstPriceTest()
@@ -100,13 +106,13 @@ namespace XY56L7_HFT_2021221.Test
         public void CreateBrandCategoryTest()
         {
             //ACT+  ASSERT
-            Assert.That(() => cl.Create( new Brand() 
+            Assert.That(() => cl.Create(new Brand()
             {
-               Category = "",
-               Rating = 3,
-               trust_level = 7
+                Category = "",
+                Rating = 3,
+                trust_level = 7
 
-            }),Throws.Exception);
+            }), Throws.Exception);
         }
         //TEST(5)
         [Test]

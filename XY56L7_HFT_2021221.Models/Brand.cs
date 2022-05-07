@@ -19,7 +19,7 @@ namespace XY56L7_HFT_2021221.Models
     public class Brand
     {
         [Key]
-        //[ToString]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BrandId { get; set; }
         //What is the level on a scale of 10 that the phone will go bad in the future?
         //[ToString]
@@ -32,9 +32,9 @@ namespace XY56L7_HFT_2021221.Models
         //[ToString]
         public string BrandName { get; set; }
 
-        [NotMapped]
-        public string AllData => $"{BrandId} : {BrandName} : {Category}" +
-            $" : {Rating} : {trust_level} : {Phones.Count()}";
+        //[NotMapped]
+        //public string AllData => $"{BrandId} : {BrandName} : {Category}" +
+        //    $" : {Rating} : {trust_level} : {Phones.Count()}";
         //[ToString]
         public int Rating { get; set; }
        
@@ -44,25 +44,11 @@ namespace XY56L7_HFT_2021221.Models
         public Brand()
         {
             Phones = new HashSet<Phone>();
+            Rating = 5;
+            trust_level = 5;
+            Category = "csodafon";
         }
-
-        //public override string ToString()
-        //{
-        //    string x = "";
-
-        //    foreach (var item in this.GetType().GetProperties().Where(x => x.GetCustomAttribute<ToStringAttribute>() != null))
-        //    {
-        //        x += "   ";
-        //        x += item.Name + "\t=> ";
-        //        x += item.GetValue(this);
-        //        x += "\n";
-        //    }
-
-        //    x += "   ";
-        //    x += "Phones\t=> ";
-        //    x += Phones.Count;
-
-        //    return x;
-        //}
+        
+        
     }
 }

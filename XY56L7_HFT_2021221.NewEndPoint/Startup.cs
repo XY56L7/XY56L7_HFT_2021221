@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,7 @@ using XY56L7_HFT_2021221.Logic;
 using XY56L7_HFT_2021221.Logic.Classes;
 using XY56L7_HFT_2021221.Logic.Interfaces;
 using XY56L7_HFT_2021221.Models;
+using XY56L7_HFT_2021221.NewEndPoint.Services;
 using XY56L7_HFT_2021221.Repository;
 using XY56L7_HFT_2021221.Repository.DataBase;
 using XY56L7_HFT_2021221.Repository.GenericRepository;
@@ -43,6 +46,7 @@ namespace XY56L7_HFT_2021221.NewEndPoint
             services.AddTransient<IRepository<OSYSTEM>, OsystemRepository>();
 
             services.AddTransient<PhoneDbContext, PhoneDbContext>();
+            services.AddSignalR();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -59,14 +63,27 @@ namespace XY56L7_HFT_2021221.NewEndPoint
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "XY56L7_HFT_2021221.NewEndPoint v1"));
             }
-
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var exception = context.Features
+                    .Get<IExceptionHandlerPathFeature>()
+                    .Error;
+                var response = new { Msg = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors(x => x
+                    .AllowCredentials()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithOrigins("http://localhost:10236"));
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

@@ -10,13 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MovieDbApp.RestClient
+namespace XY56L7_HFT_2021221.WPFClient
 {
     public class RestService
     {
         HttpClient client;
 
-        public RestService(string baseurl, string pingableEndpoint = "swagger")
+        public RestService(string baseurl, string pingableEndpoint = "/brand")
         {
             bool isOk = false;
             do

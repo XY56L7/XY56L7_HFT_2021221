@@ -17,15 +17,23 @@
         <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}" Grid.Column="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding BrandName}" />
+                    <StackPanel>
+                        <Label Content="{Binding BrandName}" />
+                        <Label Content="{Binding Category}" />
+                    </StackPanel>
+                    
+
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1">
+        <StackPanel Grid.Column="1" >
+            <Label Content="Name" Background="LightBlue" Padding="10" />
+            <TextBox Padding="10" Text="{Binding SelectedBrand.BrandName}"   />
+            
             <Button Content="Create Brand" Command="{Binding CreateBrandCommand}" Padding="10" Margin="10" />
             <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Padding="10" Margin="10" />
             <Button Content="Edit Brand" Command="{Binding EditBrandCommand}" Padding="10" Margin="10" />
-            
+            <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
     </Grid>
 </Window>
