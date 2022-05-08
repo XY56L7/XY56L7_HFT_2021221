@@ -5,35 +5,92 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XY56L7_HFT_2021221.WPFClient"
         mc:Ignorable="d"
-        Title="Brand Editor" Height="450" Width="800">
+        
+      
+        Title="Brand Editor" Height="450" Width="1000">
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
     <Grid>
-        <Grid.ColumnDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}" Grid.Column="0">
+      
+                <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}" Grid.Column="0">
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Label Content="{Binding BrandName}" />
+                                <Label Content="{Binding Category}" />
+                            </StackPanel>
+
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+        <ListBox ItemsSource="{Binding Phones}" SelectedItem="{Binding SelectedPhone}" Grid.Column="4">
+
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Label Content="{Binding BrandName}" />
-                        <Label Content="{Binding Category}" />
+                        <Label Content="{Binding PhoneName}" />
+                       
                     </StackPanel>
-                    
+
 
                 </DataTemplate>
             </ListBox.ItemTemplate>
+
         </ListBox>
-        <StackPanel Grid.Column="1" >
+        <ListBox ItemsSource="{Binding OSS}" SelectedItem="{Binding SelectedOS}" Grid.Column="2">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding OS}" />
+                      
+                    </StackPanel>
+
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+        <StackPanel Grid.Column="5" >
             <Label Content="Name" Background="LightBlue" Padding="10" />
-            <TextBox Padding="10" Text="{Binding SelectedBrand.BrandName}"   />
-            
-            <Button Content="Create Brand" Command="{Binding CreateBrandCommand}" Padding="10" Margin="10" />
-            <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Padding="10" Margin="10" />
-            <Button Content="Edit Brand" Command="{Binding EditBrandCommand}" Padding="10" Margin="10" />
+            <TextBox Padding="10" Text="{Binding SelectedPhone.PhoneName}"   />
+
+            <Button Content="Create Phone" Command="{Binding CreatePhoneCommand}" Padding="10" Margin="10" />
+            <Button Content="Delete Phone" Command="{Binding DeletePhoneCommand}" Padding="10" Margin="10" />
+            <Button Content="Edit Phone" Command="{Binding EditPhoneCommand}" Padding="10" Margin="10" />
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
+        <StackPanel Grid.Column="1" >
+                    <Label Content="Name" Background="LightBlue" Padding="10" />
+                    <TextBox Padding="10" Text="{Binding SelectedBrand.BrandName}"   />
+
+                    <Button Content="Create Brand" Command="{Binding CreateBrandCommand}" Padding="10" Margin="10" />
+                    <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Padding="10" Margin="10" />
+                    <Button Content="Edit Brand" Command="{Binding EditBrandCommand}" Padding="10" Margin="10" />
+                    <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
+                </StackPanel>
+        <StackPanel Grid.Column="3" >
+            <Label Content="Name" Background="LightBlue" Padding="10" />
+            <TextBox Padding="10" Text="{Binding SelectedOS.OS}"   />
+
+            <Button Content="Create OSYSTEM" Command="{Binding CreateOSCommand}" Padding="10" Margin="10" />
+            <Button Content="Delete OSYSTEM" Command="{Binding DeleteOSCommand}" Padding="10" Margin="10" />
+            <Button Content="Edit OSYSTEM" Command="{Binding EditOSCommand}" Padding="10" Margin="10" />
+            <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
+        </StackPanel>
+
     </Grid>
 </Window>

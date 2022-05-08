@@ -52,11 +52,11 @@ namespace XY56L7_HFT_2021221.Repository.DataBase
             //Phone Types
             
 
-            Phone P40 = new Phone() { PhoneId = 1,OSId = Android.OSId, BrandId = Huawei.BrandId,break_level = 6};
-            Phone S21 = new Phone() { PhoneId = 2,OSId = Android.OSId, BrandId = Samsung.BrandId,break_level = 8 };
-            Phone W510 = new Phone() { PhoneId = 3,OSId = MOS.OSId, BrandId = Motorola.BrandId , break_level = 9 };
-            Phone SE = new Phone() { PhoneId = 4, OSId = IOS.OSId, BrandId = Iphone.BrandId , break_level = 9};
-            Phone X = new Phone() { PhoneId = 5, OSId = IOS.OSId, BrandId = Iphone.BrandId, break_level =3 };
+            Phone P40 = new Phone() { PhoneName="P40", PhoneId = 1,OSId = Android.OSId, BrandId = Huawei.BrandId,break_level = 6};
+            Phone S21 = new Phone() { PhoneName = "S21", PhoneId = 2,OSId = Android.OSId, BrandId = Samsung.BrandId,break_level = 8 };
+            Phone W510 = new Phone() { PhoneName = "W510", PhoneId = 3,OSId = MOS.OSId, BrandId = Motorola.BrandId , break_level = 9 };
+            Phone SE = new Phone() { PhoneName = "SE", PhoneId = 4, OSId = IOS.OSId, BrandId = Iphone.BrandId , break_level = 9};
+            Phone X = new Phone() { PhoneName = "X", PhoneId = 5, OSId = IOS.OSId, BrandId = Iphone.BrandId, break_level =3 };
             //Phone's Operating System
 
 

@@ -25,7 +25,16 @@ namespace XY56L7_HFT_2021221.WPFClient
         public ICommand CreateBrandCommand { get; set; }
         public ICommand DeleteBrandCommand { get; set; }
         public ICommand EditBrandCommand { get; set; }
+        public ICommand CreateOSCommand { get; set; }
+        public ICommand DeleteOSCommand { get; set; }
+        public ICommand EditOSCommand { get; set; }
+
+        public ICommand CreatePhoneCommand { get; set; }
+        public ICommand DeletePhoneCommand { get; set; }
+        public ICommand EditPhoneCommand { get; set; }
         private Brand selectedBrand;
+        private OSYSTEM selectedOS;
+        private Phone selectedPhone;
 
         public Brand SelectedBrand
         {
@@ -45,8 +54,46 @@ namespace XY56L7_HFT_2021221.WPFClient
                 }
             }
         }
+        public OSYSTEM SelectedOS
+        {
+            get { return selectedOS; }
+            set
+            {
+                if (value != null)
+                {
+                    selectedOS = new OSYSTEM()
+                    {
+                        OS = value.OS,
+                        OSId = value.OSId
+                    };
+
+                    OnPropertyChanged();
+                    (DeleteOSCommand as RelayCommand).NotifyCanExecuteChanged();
+                }
+            }
+        }
+        public Phone SelectedPhone
+        {
+            get { return selectedPhone; }
+            set
+            {
+                if (value != null)
+                {
+                    selectedPhone = new Phone()
+                    {
+                        PhoneName = value.PhoneName,
+                        PhoneId = value.PhoneId
+                    };
+
+                    OnPropertyChanged();
+                    (DeletePhoneCommand as RelayCommand).NotifyCanExecuteChanged();
+                }
+            }
+        }
 
         public RestCollection<Brand> Brands { get; set; }
+        public RestCollection<OSYSTEM> OSS { get; set; }
+        public RestCollection<Phone> Phones { get; set; }
         public static bool IsInDesignMode
         {
             get
@@ -59,53 +106,145 @@ namespace XY56L7_HFT_2021221.WPFClient
         {
             if (!IsInDesignMode)
             {
-                Brands = new RestCollection<Brand>("http://localhost:38806/", "brand","hub");
-                CreateBrandCommand = new RelayCommand(() =>
+            
+                    OSS = new RestCollection<OSYSTEM>("http://localhost:38806/", "OSYSTEM", "hub");
+                Brands = new RestCollection<Brand>("http://localhost:38806/", "brand", "hub");
+                Phones = new RestCollection<Phone>("http://localhost:38806/", "phone", "hub");
+                CreatePhoneCommand = new RelayCommand(() =>
                 {
-                    Brands.Add(new Brand()
+                    Phones.Add(new Phone()
                     {
-                        BrandName = SelectedBrand.BrandName
-                     
-                    }) ;
+                        PhoneName = SelectedPhone.PhoneName
+
+                    });
                 });
+                DeletePhoneCommand = new RelayCommand(() =>
+                {
+                    Phones.Delete(SelectedPhone.PhoneId);
+
+                },
+                   () =>
+                   {
+                       return SelectedPhone != null;
+                   }
+                   );
+
+                EditPhoneCommand = new RelayCommand(
+                       () =>
+                       {
+
+
+                           try
+                           {
+
+                               Phones.Update(SelectedPhone);
+
+
+
+                           }
+                           catch (ArgumentException ex)
+                           {
+                               ErrorMessage = ex.Message;
+                           }
+                       });
+
+
+
+
+
+
+
+
+
+
+
+                CreateOSCommand = new RelayCommand(() =>
+                {
+                    OSS.Add(new OSYSTEM()
+                    {
+                        OS = SelectedOS.OS
+
+                    });
+                });
+                DeleteOSCommand = new RelayCommand(() =>
+                {
+                    OSS.Delete(SelectedOS.OSId);
+
+                },
+                   () =>
+                   {
+                       return SelectedOS != null;
+                   }
+                   );
+
+                EditOSCommand = new RelayCommand(
+                       () =>
+                       {
+
+
+                           try
+                           {
+
+                               OSS.Update(SelectedOS);
+
+
+
+                           }
+                           catch (ArgumentException ex)
+                           {
+                               ErrorMessage = ex.Message;
+                           }
+                       });
+                CreateBrandCommand = new RelayCommand(() =>
+                    {
+                        Brands.Add(new Brand()
+                        {
+                            BrandName = SelectedBrand.BrandName
+
+                        });
+                    });
                 DeleteBrandCommand = new RelayCommand(() =>
                 {
                     Brands.Delete(SelectedBrand.BrandId);
 
                 },
-                () =>
-                {
-                    return SelectedBrand != null;
-                }
-                );
+               () =>
+               {
+                   return SelectedBrand != null;
+               }
+               );
+
+        
                 EditBrandCommand = new RelayCommand(
-                    () =>
-                    {
-                        //selectedBrand.BrandName = SelectedBrand.BrandName;
-                        //selectedBrand.trust_level = 5;
-                        //selectedBrand.Category = "csodafon";
-                        //selectedBrand.Rating = 5;
-
-                        try
+                        () =>
                         {
-                            selectedBrand.BrandName = SelectedBrand.BrandName;
-                            selectedBrand.trust_level =selectedBrand.trust_level;
-                            selectedBrand.Category = selectedBrand.Category;
-                            selectedBrand.Rating = selectedBrand.Rating;
-                            
-                            Brands.Update(SelectedBrand);
 
-                            
-                            
-                        }
-                        catch (ArgumentException ex)
-                        {
-                            ErrorMessage = ex.Message;
-                        }
-                    });
+
+                            try
+                            {
+                                selectedBrand.BrandName = SelectedBrand.BrandName;
+                                selectedBrand.trust_level = selectedBrand.trust_level;
+                                selectedBrand.Category = selectedBrand.Category;
+                                selectedBrand.Rating = selectedBrand.Rating;
+
+                                Brands.Update(SelectedBrand);
+
+
+
+                            }
+                            catch (ArgumentException ex)
+                            {
+                                ErrorMessage = ex.Message;
+                            }
+                        });
+
                 SelectedBrand = new Brand();
+                SelectedOS = new OSYSTEM();
 
+         
+               
             }
+               
             
         }
     }

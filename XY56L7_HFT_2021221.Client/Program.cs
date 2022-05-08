@@ -48,6 +48,7 @@ namespace XY56L7_HFT_2021221.Client
                 foreach (var item in ss.Get<Brand>("brand"))
                 {
                     //Console.WriteLine(item.AllData);
+                    
                 }
                 Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
@@ -57,7 +58,7 @@ namespace XY56L7_HFT_2021221.Client
                 Console.WriteLine("\n:: ALL PHONES::\n");
                 foreach (var item in ss.Get<Phone>("phone"))
                 {
-                    Console.WriteLine(item.MainData);
+                    //Console.WriteLine(item.MainData);
                 }
                 Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
@@ -67,7 +68,7 @@ namespace XY56L7_HFT_2021221.Client
                 Console.WriteLine("\n:: ALL OSYSTEM::\n");
                 foreach (var item in ss.Get<OSYSTEM>("osystem"))
                 {
-                    Console.WriteLine(item.AllData);
+                    //Console.WriteLine(item.AllData);
                 }
                 Console.WriteLine("Press enter to return to the main menu");
                 Console.ReadLine();
@@ -97,7 +98,7 @@ namespace XY56L7_HFT_2021221.Client
                 int id = int.Parse(Console.ReadLine());
 
                 Console.Clear();
-                Console.WriteLine(ss.Get<OSYSTEM>(id, "osystem").AllData);
+                Console.WriteLine(ss.Get<OSYSTEM>(id, "osystem"));
                 Console.WriteLine("\n:: SELECTED BRAND :: \n");
 
                 Console.WriteLine("Press enter to return to the main menu");
@@ -109,7 +110,7 @@ namespace XY56L7_HFT_2021221.Client
                 int id = int.Parse(Console.ReadLine());
                 Console.Clear();
 
-                Console.WriteLine(ss.Get<Phone>(id, "phone").MainData);
+                //Console.WriteLine(ss.Get<Phone>(id, "phone").MainData);
                 Console.WriteLine("\n:: SELECTED PHONES :: \n");
 
                 Console.WriteLine("Press enter to return to the main menu");
@@ -160,7 +161,7 @@ namespace XY56L7_HFT_2021221.Client
                 Console.WriteLine("\n:: ALL PHONES::\n");
                 foreach (var item in ss.Get<Phone>("phone"))
                 {
-                    Console.WriteLine(item.MainData);
+                    //Console.WriteLine(item.MainData);
                 }
                 Console.WriteLine("Mission Completed");
                 Console.WriteLine("Press enter to return to the main menu");
@@ -180,7 +181,7 @@ namespace XY56L7_HFT_2021221.Client
                 Console.WriteLine("\n:: ALL OSYSTEMS::\n");
                 foreach (var item in ss.Get<OSYSTEM>("osystem"))
                 {
-                    Console.WriteLine(item.AllData);
+                    //Console.WriteLine(item.AllData);
                 }
                 Console.WriteLine("Mission Completed");
                 Console.WriteLine("Press enter to return to the main menu");

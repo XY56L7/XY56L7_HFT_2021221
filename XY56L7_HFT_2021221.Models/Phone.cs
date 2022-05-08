@@ -24,9 +24,10 @@ namespace XY56L7_HFT_2021221.Models
         [ForeignKey(nameof(OSYSTEM))]
      
         public int OSId { get; set; }
-        [NotMapped]
-        [JsonIgnore]
-        public string MainData => $"PhoneId: {PhoneId} : OsId: {OSId} : BrandId : {BrandId} : Break_level : {break_level}";
+        public string PhoneName { get;set; }
+        //[NotMapped]
+        //[JsonIgnore]
+        //public string MainData => $"PhoneId: {PhoneId} : OsId: {OSId} : BrandId : {BrandId} : Break_level : {break_level}";
       
         [NotMapped]
         [JsonIgnore]

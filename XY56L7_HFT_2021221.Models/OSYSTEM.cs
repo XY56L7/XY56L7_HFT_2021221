@@ -12,7 +12,7 @@ namespace XY56L7_HFT_2021221.Models
     public class OSYSTEM
     {
         [Key]
-        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OSId { get; set; }
         
        
@@ -22,12 +22,13 @@ namespace XY56L7_HFT_2021221.Models
 
         public int security_level { get; set; }
 
-        [NotMapped]
-        public string AllData => $"OSID:{OSId},  OS: {OS}" +
-            $"  ";
+        //[NotMapped]
+        //public string AllData => $"OSID:{OSId},  OS: {OS}" +
+        //    $"  ";
         public virtual ICollection<Phone> Phones_OS { get; set; }
         public OSYSTEM()
         {
+            this.security_level = 7;
             Phones_OS = new HashSet<Phone>();
         }
 
